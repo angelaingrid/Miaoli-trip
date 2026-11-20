@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 苗栗慢活之旅｜兩天一夜行前手冊</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        },
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 隱藏滾動條但保持滾動 */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* 導覽列同一排專用樣式 */
+        .single-row-nav {
+            display: flex;
+            flex-wrap: nowrap !important;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .single-row-nav-item {
+            flex: 1 0 auto;
+            white-space: nowrap;
+        }
+        @media (min-width: 768px) {
+            .single-row-nav-item {
+                flex: 1 1 0%;
+            }
+        }
+
+        /* 列印樣式優化 */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .tab-content {
+                display: block !important;
+                page-break-after: always;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white">
+
+    <!-- 頂部 Header -->
+    <header class="bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900 text-white shadow-md no-print">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-700/60 border border-emerald-400/30 flex items-center justify-center text-emerald-200 text-xl font-bold shadow-inner">
+                    <i class="fa-solid fa-mountain-sun"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-bold tracking-wide">苗栗慢活之旅手冊</h1>
+                    <p class="text-xs text-emerald-200/90 font-light">2026/12/19 (六) - 12/20 (日) ｜ 兩天一夜歡樂行</p>
+                </div>
+            </div>
+            <div class="text-xs bg-emerald-950/40 px-3 py-1.5 rounded-full border border-emerald-500/30 text-emerald-200 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>行前須知 & 實用指南</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 頂部 7 大分頁導覽列（強制所有螢幕橫向排在同一排，絕不折行） -->
+    <nav class="sticky top-0 z-50 bg-emerald-900/95 backdrop-blur border-b border-emerald-800/80 shadow-md no-print">
+        <div class="max-w-6xl mx-auto px-1 sm:px-4">
+            <div class="single-row-nav no-scrollbar py-2 gap-1 sm:gap-2">
+                <button onclick="switchTab('tab-1')" id="btn-tab-1" class="single-row-nav-item tab-btn active text-xs sm:text-sm py-2 px-2.5 sm:px-3 rounded-lg font-medium transition-all text-center flex items-center justify-center gap-1.5 bg-emerald-700 text-white shadow-sm border border-emerald-500/40">
+                    <i class="fa-solid fa-compass"></i>
+                    <span>1. 行程總覽</span>
+                </button>
+                <button onclick="switchTab('tab-2')" id="btn-tab-2" class="single-row-nav-item tab-btn text-xs sm:text-sm py-2 px-2.5 sm:px-3 rounded-lg font-medium transition-all text-center flex items-center justify-center gap-1.5 text-emerald-100 hover:bg-emerald-800/70 hover:text-white">
+                    <i class="fa-solid fa-bed"></i>
+                    <span>2. 住宿分房 & DIY</span>
+                </button>
+                <button onclick="switchTab('tab-3')" id="btn-tab-3" class="single-row-nav-item tab-btn text-xs sm:text-sm py-2 px-2.5 sm:px-3 rounded-lg font-medium transition-all text-center flex items-center justify-center gap-1.5 text-emerald-100 hover:bg-emerald-800/70 hover:text-white">
+                    <i class="fa-solid fa-calendar-day"></i>
+                    <span>3. Day 1 行程</span>
+                </button>
+                <button onclick="switchTab('tab-4')" id="btn-tab-4" class="single-row-nav-item tab-btn text-xs sm:text-sm py-2 px-2.5 sm:px-3 rounded-lg font-medium transition-all text-center flex items-center justify-center gap-1.5 text-emerald-100 hover:bg-emerald-800/70 hover:text-white">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>4. Day 2 行程</span>
+                </button>
+                <button onclick="switchTab('tab-5')" id="btn-tab-5" class="single-row-nav-item tab-btn text-xs sm:text-sm py-2 px-2.5 sm:px-3 rounded-lg font-medium transition-all text-center flex items-center justify-center gap-1.5 text-emerald-100 hover:bg-emerald-800/70 hover:text-white">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>5. 行李清單</span>
+                </button>
+                <button onclick="switchTab('tab-6')" id="btn-tab-6" class="single-row-nav-item tab-btn text-xs sm:text-sm py-2 px-2.5 sm:px-3 rounded-lg font-medium transition-all text-center flex items-center justify-center gap-1.5 text-emerald-100 hover:bg-emerald-800/70 hover:text-white">
+                    <i class="fa-solid fa-calculator"></i>
+                    <span>6. 共同支出</span>
+                </button>
+                <button onclick="switchTab('tab-7')" id="btn-tab-7" class="single-row-nav-item tab-btn text-xs sm:text-sm py-2 px-2.5 sm:px-3 rounded-lg font-medium transition-all text-center flex items-center justify-center gap-1.5 text-emerald-100 hover:bg-emerald-800/70 hover:text-white">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                    <span>7. 給百合費用</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要內容區域 -->
+    <main class="max-w-6xl mx-auto px-4 py-6 flex-grow w-full">
+
+        <!-- ==================== 頁面 1：總覽與倒數 ==================== -->
+        <section id="tab-1" class="tab-content space-y-6">
+            <!-- Hero 主視覺卡片 -->
+            <div class="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl overflow-hidden border border-emerald-700/50">
+                <div class="absolute -right-10 -bottom-10 opacity-10 text-white text-9xl pointer-events-none">
+                    <i class="fa-solid fa-tree"></i>
+                </div>
+                <div class="relative z-10 max-w-3xl space-y-4">
+                    <div class="inline-flex items-center gap-2 bg-emerald-700/80 backdrop-blur px-3.5 py-1.5 rounded-full text-xs font-medium text-emerald-100 border border-emerald-500/30">
+                        <i class="fa-solid fa-bullhorn text-amber-300"></i>
+                        <span>旅行倒數中！準備好心情出發吧</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+                        苗栗兩天一夜．山林慢活慢旅
+                    </h2>
+                    <p class="text-emerald-100/90 text-sm sm:text-base leading-relaxed">
+                        期待已久的苗栗放鬆之旅即將啟程！走訪山城人文、手作體驗藍染工藝、感受鐵道自行車的悠閒風采與採草莓樂趣。本手冊整理了完整的行程、住宿分房、行李清單與費用分帳資訊。
+                    </p>
+
+                    <!-- 實時動態倒數計時器 (目標：2026/12/19 09:30 高雄出發) -->
+                    <div class="bg-black/30 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/10 mt-6">
+                        <div class="text-xs text-emerald-200 mb-3 font-medium flex items-center gap-2">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>距離出發（2026/12/19 09:30 高雄出發）還剩：</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
+                            <div class="bg-emerald-950/60 p-2 sm:p-3 rounded-xl border border-emerald-500/30">
+                                <span id="cd-days" class="text-xl sm:text-3xl font-black text-amber-300 font-mono">00</span>
+                                <span class="block text-[10px] sm:text-xs text-emerald-200 mt-1">天</span>
+                            </div>
+                            <div class="bg-emerald-950/60 p-2 sm:p-3 rounded-xl border border-emerald-500/30">
+                                <span id="cd-hours" class="text-xl sm:text-3xl font-black text-amber-300 font-mono">00</span>
+                                <span class="block text-[10px] sm:text-xs text-emerald-200 mt-1">時</span>
+                            </div>
+                            <div class="bg-emerald-950/60 p-2 sm:p-3 rounded-xl border border-emerald-500/30">
+                                <span id="cd-minutes" class="text-xl sm:text-3xl font-black text-amber-300 font-mono">00</span>
+                                <span class="block text-[10px] sm:text-xs text-emerald-200 mt-1">分</span>
+                            </div>
+                            <div class="bg-emerald-950/60 p-2 sm:p-3 rounded-xl border border-emerald-500/30">
+                                <span id="cd-seconds" class="text-xl sm:text-3xl font-black text-amber-300 font-mono">00</span>
+                                <span class="block text-[10px] sm:text-xs text-emerald-200 mt-1">秒</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 四大行程速查卡片 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex items-start space-x-4">
+                    <div class="p-3 bg-emerald-50 text-emerald-700 rounded-xl">
+                        <i class="fa-solid fa-calendar-days text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-600">活動日期</div>
+                        <div class="text-base font-bold text-slate-800">2026/12/19 - 12/20</div>
+                        <div class="text-xs text-slate-600 mt-0.5">週六至週日（兩天一夜）</div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex items-start space-x-4">
+                    <div class="p-3 bg-teal-50 text-teal-700 rounded-xl">
+                        <i class="fa-solid fa-users text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-600">同行人數</div>
+                        <div class="text-base font-bold text-slate-800">29 人大團體</div>
+                        <div class="text-xs text-slate-600 mt-0.5">20 位大人 ＋ 9 位小朋友</div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex items-start space-x-4">
+                    <div class="p-3 bg-amber-50 text-amber-700 rounded-xl">
+                        <i class="fa-solid fa-house-chimney-window text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-600">住宿地點</div>
+                        <div class="text-base font-bold text-slate-800">三義卓也小屋</div>
+                        <div class="text-xs text-slate-600 mt-0.5">共 10 間特色客房</div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex items-start space-x-4">
+                    <div class="p-3 bg-indigo-50 text-indigo-700 rounded-xl">
+                        <i class="fa-solid fa-car text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-slate-600">交通方式</div>
+                        <div class="text-base font-bold text-slate-800">自駕出遊</div>
+                        <div class="text-xs text-slate-600 mt-0.5">各車請保持通訊暢通</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 兩天行程重點摘要卡片 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-6">
+                <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2 border-b border-slate-100 pb-3">
+                    <i class="fa-solid fa-map-location-dot text-emerald-600"></i>
+                    <span>兩天行程亮點總覽</span>
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Day 1 重點 -->
+                    <div class="bg-emerald-50/50 border border-emerald-100 rounded-xl p-5 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-emerald-800 bg-emerald-200/80 px-2.5 py-1 rounded-full">DAY 1 亮點</span>
+                            <span class="text-xs text-emerald-700">12/19 (六)</span>
+                        </div>
+                        <h4 class="font-bold text-emerald-950 text-base">懷舊體驗與山林藍染</h4>
+                        <ul class="text-xs sm:text-sm text-slate-700 space-y-2 list-disc list-inside">
+                            <li><strong class="text-slate-900">棗莊古藝庭園：</strong>品嚐經典客家料理與庭園漫步</li>
+                            <li><strong class="text-slate-900">大補內彈珠汽水：</strong>DIY 歡樂汽水體驗與無限暢飲</li>
+                            <li><strong class="text-slate-900">卓也小屋藍染 DIY：</strong>體驗傳承藍染工藝手作樂趣</li>
+                            <li><strong class="text-slate-900">晚宴時光：</strong>三義特色客家風味料理聚餐</li>
+                        </ul>
+                    </div>
+
+                    <!-- Day 2 重點 -->
+                    <div class="bg-teal-50/50 border border-teal-100 rounded-xl p-5 space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-teal-800 bg-teal-200/80 px-2.5 py-1 rounded-full">DAY 2 亮點</span>
+                            <span class="text-xs text-teal-700">12/20 (日)</span>
+                        </div>
+                        <h4 class="font-bold text-teal-950 text-base">舊山線鐵道與香甜採果</h4>
+                        <ul class="text-xs sm:text-sm text-slate-700 space-y-2 list-disc list-inside">
+                            <li><strong class="text-slate-900">舊山線鐵道自行車：</strong>B路線（龍騰站 ↔ 勝興站）愜意漫遊</li>
+                            <li><strong class="text-slate-900">桐花村午餐：</strong>質感精緻客家美食小聚</li>
+                            <li><strong class="text-slate-900">卓蘭採草莓：</strong>秘境果園體驗現採鮮甜草莓</li>
+                            <li><strong class="text-slate-900">垂坤食品旗艦店：</strong>苗栗人氣伴手禮大採購完滿賦歸</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 溫馨提醒事項卡片 -->
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 text-amber-900 space-y-3">
+                <h4 class="font-bold text-sm sm:text-base flex items-center gap-2 text-amber-800">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-600"></i>
+                    <span>行前重要提醒（山區氣候與穿著）</span>
+                </h4>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs sm:text-sm">
+                    <div class="bg-white/70 p-3 rounded-lg border border-amber-200/60">
+                        <span class="font-bold block mb-1 text-amber-950">1. 山區溫差大</span>
+                        苗栗三義冬日山區清晨與早晚溫差顯著，建議準備羽絨外套與保暖配件（洋蔥式穿法）。
+                    </div>
+                    <div class="bg-white/70 p-3 rounded-lg border border-amber-200/60">
+                        <span class="font-bold block mb-1 text-amber-950">2. 舒適好走鞋款</span>
+                        舊山線鐵道與園區步道多需步行，請穿著輕便舒適的運動鞋，並留意階梯。
+                    </div>
+                    <div class="bg-white/70 p-3 rounded-lg border border-amber-200/60">
+                        <span class="font-bold block mb-1 text-amber-950">3. 藍染活動防污</span>
+                        體驗藍染過程建議穿著深色衣物或攜帶替換衣物，避免染料沾染淺色服飾。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 頁面 2：住宿分房 & DIY ==================== -->
+        <section id="tab-2" class="tab-content hidden space-y-6">
+            <!-- 房號提醒黃色警語 -->
+            <div class="bg-amber-100 border-l-4 border-amber-500 p-4 rounded-r-xl shadow-sm text-amber-900 text-xs sm:text-sm leading-relaxed">
+                <p class="font-bold flex items-center gap-2 mb-1">
+                    <i class="fa-solid fa-circle-info text-amber-600"></i>
+                    <span>入住分房溫馨提醒</span>
+                </p>
+                <p>
+                    ※ 現場 Check-in 時由園區櫃台依房型分配實際房號，目前僅確認房型與入住家庭。加床僅限『思婷』與『沐涵』各 1 床（每床 $500，合計 2 床 / $1,000）。
+                </p>
+            </div>
+
+            <!-- 住宿房型明細表 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row justify-between sm:items-center gap-2 bg-slate-50/50">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base sm:text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-hotel text-emerald-600"></i>
+                            <span>三義卓也小屋｜10 間房型分配明細表</span>
+                        </h3>
+                        <p class="text-xs text-slate-600 mt-0.5">入住時間：2026/12/19 (六) 15:00 後</p>
+                    </div>
+                    <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full self-start sm:self-auto">
+                        總房價：$49,200（20大9小）
+                    </span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs sm:text-sm">
+                        <thead class="bg-slate-100 text-slate-700 font-semibold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3 sm:p-4 min-w-[100px]">館別</th>
+                                <th class="p-3 sm:p-4 min-w-[160px]">房型與床型</th>
+                                <th class="p-3 sm:p-4 min-w-[90px]">代表姓名</th>
+                                <th class="p-3 sm:p-4 min-w-[140px]">入住人數（小兒年齡）</th>
+                                <th class="p-3 sm:p-4 text-right min-w-[140px]">費用小計</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-700">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-medium text-emerald-800">藏山館</td>
+                                <td class="p-3 sm:p-4">經典雙人房</td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-900">思婷</td>
+                                <td class="p-3 sm:p-4">2大1小 <span class="text-xs text-slate-600">(9歲)</span></td>
+                                <td class="p-3 sm:p-4 text-right font-medium">$3,400 + 加床$500 = <strong class="text-slate-900">$3,900</strong></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-medium text-emerald-800">藏山館</td>
+                                <td class="p-3 sm:p-4">經典雙人房</td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-900">子昕</td>
+                                <td class="p-3 sm:p-4">2大1小 <span class="text-xs text-slate-600">(3歲)</span></td>
+                                <td class="p-3 sm:p-4 text-right font-medium">$3,400 <span class="text-xs text-slate-600">(不加床)</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-medium text-emerald-800">藏山館</td>
+                                <td class="p-3 sm:p-4">經典雙人房</td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-900">小右</td>
+                                <td class="p-3 sm:p-4">2大0小</td>
+                                <td class="p-3 sm:p-4 text-right font-medium">$3,400</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-medium text-emerald-800">藏山館</td>
+                                <td class="p-3 sm:p-4">經典雙人房</td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-900">筑芸</td>
+                                <td class="p-3 sm:p-4">2大1小 <span class="text-xs text-slate-600">(4歲)</span></td>
+                                <td class="p-3 sm:p-4 text-right font-medium">$3,400 <span class="text-xs text-slate-600">(不加床)</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-medium text-emerald-800">藏山館</td>
+                                <td class="p-3 sm:p-4">尊爵雙人房 <span class="text-xs text-slate-600">(二小床)</span></td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-900">名真</td>
+                                <td class="p-3 sm:p-4">2大1小 <span class="text-xs text-slate-600">(3歲)</span></td>
+                                <td class="p-3 sm:p-4 text-right font-medium">$5,000 <span class="text-xs text-slate-600">(不加床)</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-medium text-teal-800">本館</td>
+                                <td class="p-3 sm:p-4">協力雙人房 <span class="text-xs text-slate-600">(二小床)</span></td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-900">阿雪</td>
+                                <td class="p-3 sm:p-4">2大0小</td>
+                                <td class="p-3 sm:p-4 text-right font-medium">$5,000</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-medium text-teal-800">本館</td>
+                                <td class="p-3 sm:p-4">穀倉雙人房 <span class="text-xs text-slate-600">(一大床)</span></td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-900">百合</td>
+                                <td class="p-3 sm:p-4">2大0小</td>
+                                <td class="p-3 sm:p-4 text-right font-medium">$5,200</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-medium text-teal-800">本館</td>
+                                <td class="p-3 sm:p-4">VIP雙人房 <span class="text-xs text-slate-600">(一大床)</span></td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-900">沐涵</td>
+                                <td class="p-3 sm:p-4">2大1小 <span class="text-xs text-slate-600">(8歲)</span></td>
+                                <td class="p-3 sm:p-4 text-right font-medium">$5,600 + 加床$500 = <strong class="text-slate-900">$6,100</strong></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-medium text-teal-800">本館</td>
+                                <td class="p-3 sm:p-4">穀倉四人房 <span class="text-xs text-slate-600">(一大床+和室)</span></td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-900">mir</td>
+                                <td class="p-3 sm:p-4">2大2小 <span class="text-xs text-slate-600">(7歲、4歲)</span></td>
+                                <td class="p-3 sm:p-4 text-right font-medium">$6,900 <span class="text-xs text-slate-600">(不加床)</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 sm:p-4 font-medium text-teal-800">本館</td>
+                                <td class="p-3 sm:p-4">穀倉四人房 <span class="text-xs text-slate-600">(一大床+和室)</span></td>
+                                <td class="p-3 sm:p-4 font-bold text-slate-900">阿左</td>
+                                <td class="p-3 sm:p-4">2大2小 <span class="text-xs text-slate-600">(10歲、7歲)</span></td>
+                                <td class="p-3 sm:p-4 text-right font-medium">$6,900 <span class="text-xs text-slate-600">(不加床)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 藍染 DIY 說明與預訂明細 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-4">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base sm:text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-shirt text-indigo-600"></i>
+                            <span>卓也藍染工坊｜藍染 DIY 體驗活動</span>
+                        </h3>
+                        <p class="text-xs text-slate-600 mt-0.5">時間：12/19 (六) 15:30 - 17:00 ｜ 地點：卓也藍染工坊</p>
+                    </div>
+                    <span class="text-xs font-bold bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full self-start sm:self-auto">
+                        DIY 預訂總額：$8,400 (7組/11件)
+                    </span>
+                </div>
+
+                <!-- 步驟說明 -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                    <div class="bg-indigo-50/60 p-3 rounded-xl border border-indigo-100 text-center">
+                        <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold inline-flex items-center justify-center mb-1">1</span>
+                        <div class="font-bold text-indigo-950">挑選布料樣式</div>
+                        <div class="text-slate-600 text-[11px]">選擇個人喜好品項</div>
+                    </div>
+                    <div class="bg-indigo-50/60 p-3 rounded-xl border border-indigo-100 text-center">
+                        <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold inline-flex items-center justify-center mb-1">2</span>
+                        <div class="font-bold text-indigo-950">摺疊綁定構圖</div>
+                        <div class="text-slate-600 text-[11px]">使用橡皮筋與木板綁紮</div>
+                    </div>
+                    <div class="bg-indigo-50/60 p-3 rounded-xl border border-indigo-100 text-center">
+                        <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold inline-flex items-center justify-center mb-1">3</span>
+                        <div class="font-bold text-indigo-950">反覆浸染氧化</div>
+                        <div class="text-slate-600 text-[11px]">揉染並接觸空氣氧化</div>
+                    </div>
+                    <div class="bg-indigo-50/60 p-3 rounded-xl border border-indigo-100 text-center">
+                        <span class="w-6 h-6 rounded-full bg-indigo-600 text-white font-bold inline-flex items-center justify-center mb-1">4</span>
+                        <div class="font-bold text-indigo-950">拆線清洗沖水</div>
+                        <div class="text-slate-600 text-[11px]">展開呈現獨一無二圖騰</div>
+                    </div>
+                </div>
+
+                <!-- 藍染預訂明細 -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs sm:text-sm border border-slate-100 rounded-xl">
+                        <thead class="bg-indigo-50/50 text-indigo-950 font-semibold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3">代表姓名</th>
+                                <th class="p-3">預訂體驗內容</th>
+                                <th class="p-3 text-right">費用</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-slate-800">思婷</td>
+                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
+                                <td class="p-3 text-right font-medium">$1,530</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-slate-800">小右</td>
+                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
+                                <td class="p-3 text-right font-medium">$1,980</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-slate-800">筑芸</td>
+                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
+                                <td class="p-3 text-right font-medium">$540</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-slate-800">阿雪</td>
+                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
+                                <td class="p-3 text-right font-medium">$540</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-slate-800">沐涵</td>
+                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
+                                <td class="p-3 text-right font-medium">$300</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-slate-800">mir</td>
+                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
+                                <td class="p-3 text-right font-medium">$1,980</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-slate-800">阿左</td>
+                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
+                                <td class="p-3 text-right font-medium">$1,530</td>
+                            </tr>
+                            <tr class="bg-slate-50 font-bold">
+                                <td class="p-3 text-slate-700" colspan="2">未預訂 DIY 家庭（子昕、名真、百合）</td>
+                                <td class="p-3 text-right text-slate-500">$0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 頁面 3：Day 1 行程 ==================== -->
+        <section id="tab-3" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-8">
+                <div class="border-b border-slate-100 pb-4 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg sm:text-xl flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-day text-emerald-600"></i>
+                            <span>Day 1 行程規劃（2026 / 12 / 19 週六）</span>
+                        </h3>
+                        <p class="text-xs text-slate-600 mt-1">高雄啟程 ➔ 公館午餐 ➔ 汽水工廠 ➔ 卓也小屋藍染 ➔ 客家晚宴</p>
+                    </div>
+                </div>
+
+                <!-- 時間軸列表 -->
+                <div class="relative border-l-2 border-emerald-200 ml-3 sm:ml-6 space-y-8 pl-4 sm:pl-8">
+                    <!-- 09:30 高雄出發 -->
+                    <div class="relative">
+                        <div class="absolute -left-[25px] sm:-left-[41px] top-0 w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold border-2 border-white shadow">
+                            1
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full">09:30</span>
+                                <h4 class="font-bold text-slate-900 text-base">高雄出發北上</h4>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600">車隊各自啟程，建議行前檢查胎壓與油量，經國道北上往苗栗前進。</p>
+                        </div>
+                    </div>
+
+                    <!-- 12:00 午餐：棗莊 -->
+                    <div class="relative">
+                        <div class="absolute -left-[25px] sm:-left-[41px] top-0 w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold border-2 border-white shadow">
+                            2
+                        </div>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full">12:00 - 13:30</span>
+                                    <h4 class="font-bold text-slate-900 text-base">午餐：棗莊古藝庭園膳坊</h4>
+                                </div>
+                                <a href="https://maps.google.com/?q=棗莊古藝庭園膳坊" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-medium hover:bg-emerald-700 transition-colors w-fit">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Google Map 導航</span>
+                                </a>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                經典紅棗特色客家料理，園區備有可愛動物餵食區與可愛兔兔園區，非常適合大小朋友餐後散步。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 13:45 大補內彈珠汽水 -->
+                    <div class="relative">
+                        <div class="absolute -left-[25px] sm:-left-[41px] top-0 w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold border-2 border-white shadow">
+                            3
+                        </div>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full">13:45 - 15:00</span>
+                                    <h4 class="font-bold text-slate-900 text-base">大補內彈珠汽水觀光工廠</h4>
+                                </div>
+                                <a href="https://maps.google.com/?q=大補內彈珠汽水觀光工廠" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-medium hover:bg-emerald-700 transition-colors w-fit">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Google Map 導航</span>
+                                </a>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                29 人大團體導覽預訂！含彈珠汽水 DIY、無上限現場暢飲、古早味童玩體驗與歡樂拿彈珠紀念。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 15:00 Check-in & 藍染 DIY -->
+                    <div class="relative">
+                        <div class="absolute -left-[25px] sm:-left-[41px] top-0 w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold border-2 border-white shadow">
+                            4
+                        </div>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full">15:00 - 17:30</span>
+                                    <h4 class="font-bold text-slate-900 text-base">卓也小屋 Check-in & 藍染 DIY</h4>
+                                </div>
+                                <a href="https://maps.google.com/?q=三義卓也小屋" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-medium hover:bg-emerald-700 transition-colors w-fit">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Google Map 導航</span>
+                                </a>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                15:00 現場辦理入住與行李放置，15:30-17:00 於卓也藍染工坊準時進行手作體驗。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 18:00 晚餐：外出餐廳三選一 -->
+                    <div class="relative">
+                        <div class="absolute -left-[25px] sm:-left-[41px] top-0 w-6 h-6 rounded-full bg-amber-500 text-white flex items-center justify-center text-xs font-bold border-2 border-white shadow">
+                            5
+                        </div>
+                        <div class="bg-amber-50/70 border border-amber-200 rounded-2xl p-5 space-y-4">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-amber-200/60 pb-3">
+                                <div>
+                                    <span class="bg-amber-200 text-amber-900 text-xs font-bold px-2.5 py-0.5 rounded-full">18:00 晚餐時間</span>
+                                    <h4 class="font-bold text-slate-900 text-lg mt-1">Day 1 晚餐待定選項（三義在地餐廳三選一）</h4>
+                                </div>
+                                <span class="text-xs bg-amber-600 text-white px-2.5 py-1 rounded-full w-fit">依現場意向決議</span>
+                            </div>
+
+                            <p class="text-xs sm:text-sm text-slate-700">
+                                現場將依天候與大家偏好選擇以下其中一家精選餐廳聚餐：
+                            </p>
+
+                            <!-- 3 間餐廳選項 Card Grid -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <!-- 餐廳 1 -->
+                                <div class="bg-white p-4 rounded-xl border border-amber-200 shadow-sm flex flex-col justify-between space-y-3">
+                                    <div class="space-y-2">
+                                        <div class="font-bold text-slate-900 text-base border-b border-slate-100 pb-1.5">
+                                            1. 穎川美食館
+                                        </div>
+                                        <p class="text-xs text-slate-600 leading-relaxed">
+                                            三合院傳統老宅客家菜，氣氛溫馨懷舊，道地客家風味。
+                                        </p>
+                                        <div class="text-xs font-medium text-amber-800 bg-amber-50 p-2 rounded-lg">
+                                            <strong class="block text-amber-950 mb-1">必點招牌：</strong>
+                                            酥炸椒鹽豬腳、白斬土雞附桔醬、梅干扣肉、薑絲炒大腸、炒粄條
+                                        </div>
+                                    </div>
+                                    <a href="https://maps.app.goo.gl/88ViG1MRRPo3uvdZ8" target="_blank" rel="noopener noreferrer" class="w-full text-center text-xs bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg font-medium transition-colors inline-flex items-center justify-center gap-1.5">
+                                        <i class="fa-solid fa-map-location-dot"></i>
+                                        <span>穎川美食館 Google Map 導航</span>
+                                    </a>
+                                </div>
+
+                                <!-- 餐廳 2 -->
+                                <div class="bg-white p-4 rounded-xl border border-amber-200 shadow-sm flex flex-col justify-between space-y-3">
+                                    <div class="space-y-2">
+                                        <div class="font-bold text-slate-900 text-base border-b border-slate-100 pb-1.5">
+                                            2. 三義土雞城
+                                        </div>
+                                        <p class="text-xs text-slate-600 leading-relaxed">
+                                            山林庭園景觀土雞料理，提供手工麻糬體驗，小朋友的最愛。
+                                        </p>
+                                        <div class="text-xs font-medium text-amber-800 bg-amber-50 p-2 rounded-lg">
+                                            <strong class="block text-amber-950 mb-1">必點招牌：</strong>
+                                            黃金土雞盤（一雞三吃）、羊奶頭烏骨雞湯、梅干扣肉刈包、碳烤鹹豬肉
+                                        </div>
+                                    </div>
+                                    <a href="https://maps.app.goo.gl/CZiCapZju478caYu5" target="_blank" rel="noopener noreferrer" class="w-full text-center text-xs bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg font-medium transition-colors inline-flex items-center justify-center gap-1.5">
+                                        <i class="fa-solid fa-map-location-dot"></i>
+                                        <span>三義土雞城 Google Map 導航</span>
+                                    </a>
+                                </div>
+
+                                <!-- 餐廳 3 -->
+                                <div class="bg-white p-4 rounded-xl border border-amber-200 shadow-sm flex flex-col justify-between space-y-3">
+                                    <div class="space-y-2">
+                                        <div class="font-bold text-slate-900 text-base border-b border-slate-100 pb-1.5">
+                                            3. 三義大眾餐館
+                                        </div>
+                                        <p class="text-xs text-slate-600 leading-relaxed">
+                                            在地高 CP 值經典熱炒老店，出菜迅速，白飯吃到飽。
+                                        </p>
+                                        <div class="text-xs font-medium text-amber-800 bg-amber-50 p-2 rounded-lg">
+                                            <strong class="block text-amber-950 mb-1">必點招牌：</strong>
+                                            招牌麻油燜鴨（可加湯做火鍋二吃）、客家封肉配滷筍、橙花排骨
+                                        </div>
+                                    </div>
+                                    <a href="https://maps.app.goo.gl/wSdMPbtSTNQY94kQ7" target="_blank" rel="noopener noreferrer" class="w-full text-center text-xs bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg font-medium transition-colors inline-flex items-center justify-center gap-1.5">
+                                        <i class="fa-solid fa-map-location-dot"></i>
+                                        <span>三義大眾餐館 Google Map 導航</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 頁面 4：Day 2 行程 ==================== -->
+        <section id="tab-4" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-8">
+                <div class="border-b border-slate-100 pb-4 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg sm:text-xl flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-check text-emerald-600"></i>
+                            <span>Day 2 行程規劃（2026 / 12 / 20 週日）</span>
+                        </h3>
+                        <p class="text-xs text-slate-600 mt-1">園區早餐 ➔ 舊山線鐵道車 ➔ 桐花村客家菜 ➔ 採草莓 ➔ 垂坤伴手禮 ➔ 賦歸</p>
+                    </div>
+                </div>
+
+                <!-- 時間軸列表 -->
+                <div class="relative border-l-2 border-teal-200 ml-3 sm:ml-6 space-y-8 pl-4 sm:pl-8">
+                    <!-- 07:30 早餐 & 退房 -->
+                    <div class="relative">
+                        <div class="absolute -left-[25px] sm:-left-[41px] top-0 w-6 h-6 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs font-bold border-2 border-white shadow">
+                            1
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-0.5 rounded-full">07:30 - 08:40</span>
+                                <h4 class="font-bold text-slate-900 text-base">園區早餐 & 辦理退房</h4>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600">享用卓也小屋特色養生精緻早餐，收拾行李於 08:45 前完成退房手續。</p>
+                        </div>
+                    </div>
+
+                    <!-- 09:00 集合取票 & 09:30 鐵道自行車 -->
+                    <div class="relative">
+                        <div class="absolute -left-[25px] sm:-left-[41px] top-0 w-6 h-6 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs font-bold border-2 border-white shadow">
+                            2
+                        </div>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-0.5 rounded-full">09:00 - 10:50</span>
+                                    <h4 class="font-bold text-slate-900 text-base">舊山線鐵道自行車 B路線（龍騰站 ↔ 勝興站）</h4>
+                                </div>
+                                <div class="flex flex-wrap gap-2">
+                                    <a href="https://maps.google.com/?q=舊山線鐵道自行車龍騰站" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs bg-emerald-600 text-white px-2.5 py-1 rounded-lg hover:bg-emerald-700">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <span>龍騰站</span>
+                                    </a>
+                                    <a href="https://maps.google.com/?q=勝興車站" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs bg-emerald-600 text-white px-2.5 py-1 rounded-lg hover:bg-emerald-700">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <span>勝興車站</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                <strong class="text-slate-900">班次 B1（09:30 出發）</strong>：09:00 前必須抵達龍騰站集合核對身份取票。途經魚藤坪鐵橋、遠眺龍騰斷橋、舊山線隧道與勝興老街漫步。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 11:30 午餐：桐花村 -->
+                    <div class="relative">
+                        <div class="absolute -left-[25px] sm:-left-[41px] top-0 w-6 h-6 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs font-bold border-2 border-white shadow">
+                            3
+                        </div>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-0.5 rounded-full">11:30 - 13:00</span>
+                                    <h4 class="font-bold text-slate-900 text-base">午餐：桐花村三義客家料理</h4>
+                                </div>
+                                <a href="https://maps.google.com/?q=桐花村三義客家料理" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-medium hover:bg-emerald-700 transition-colors w-fit">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Google Map 導航</span>
+                                </a>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                薰衣草森林旗下精緻客家美食品牌，環境優雅精緻，呈現新意與傳統兼具的美味客家菜餚。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 13:30 卓蘭採草莓 -->
+                    <div class="relative">
+                        <div class="absolute -left-[25px] sm:-left-[41px] top-0 w-6 h-6 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs font-bold border-2 border-white shadow">
+                            4
+                        </div>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-0.5 rounded-full">13:30 - 15:00</span>
+                                    <h4 class="font-bold text-slate-900 text-base">卓蘭秘境草莓園採草莓</h4>
+                                </div>
+                                <a href="https://maps.google.com/?q=卓蘭草莓園" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-medium hover:bg-emerald-700 transition-colors w-fit">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Google Map 導航</span>
+                                </a>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                前往水果之鄉卓蘭，親自體驗採摘冬日最新鮮結實的高山香甜草莓。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 15:30 垂坤食品旗艦店 -->
+                    <div class="relative">
+                        <div class="absolute -left-[25px] sm:-left-[41px] top-0 w-6 h-6 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs font-bold border-2 border-white shadow">
+                            5
+                        </div>
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200/80 space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-0.5 rounded-full">15:30 - 16:30</span>
+                                    <h4 class="font-bold text-slate-900 text-base">垂坤食品旗艦店（伴手禮採買）</h4>
+                                </div>
+                                <a href="https://maps.google.com/?q=垂坤食品旗艦店" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-medium hover:bg-emerald-700 transition-colors w-fit">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>Google Map 導航</span>
+                                </a>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                                苗栗必訪零食肉乾王國，寬敞停車場與豐富零嘴，為親友與自己帶回滿滿伴手禮。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 16:30 賦歸 -->
+                    <div class="relative">
+                        <div class="absolute -left-[25px] sm:-left-[41px] top-0 w-6 h-6 rounded-full bg-emerald-700 text-white flex items-center justify-center text-xs font-bold border-2 border-white shadow">
+                            6
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-0.5 rounded-full">16:30 ~</span>
+                                <h4 class="font-bold text-slate-900 text-base">滿載而歸 ➔ 返回高雄</h4>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-600">結束兩天一夜美好旅程，各車注意行車安全，平平安安回到溫暖的家。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 頁面 5：行李清單 ==================== -->
+        <section id="tab-5" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-lg sm:text-xl flex items-center gap-2">
+                            <i class="fa-solid fa-clipboard-check text-emerald-600"></i>
+                            <span>個人與家庭行李互動準備清單</span>
+                        </h3>
+                        <p class="text-xs text-slate-600 mt-1">點擊勾選即可即時更新完成進度（自動儲存於瀏覽器）</p>
+                    </div>
+
+                    <!-- 進度條 -->
+                    <div class="w-full sm:w-64 space-y-1.5">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span class="text-slate-600">準備進度</span>
+                            <span id="pack-progress-text" class="text-emerald-700">0%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                            <div id="pack-progress-bar" class="bg-emerald-600 h-full w-0 transition-all duration-300"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 四大分類 Checkbox Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 分類 1：證件與金錢 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                        <h4 class="font-bold text-sm text-slate-800 flex items-center gap-2 border-b border-slate-200 pb-2">
+                            <i class="fa-solid fa-id-card text-emerald-600"></i>
+                            <span>1. 證件與重要物品</span>
+                        </h4>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>身份證件 / 健保卡（大人與小孩）</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>現金 / 信用卡 / 電子支付</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>汽車鑰匙 / 駕駛執照</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 分類 2：衣物與保暖 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                        <h4 class="font-bold text-sm text-slate-800 flex items-center gap-2 border-b border-slate-200 pb-2">
+                            <i class="fa-solid fa-shirt text-teal-600"></i>
+                            <span>2. 衣物與保暖用品</span>
+                        </h4>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>保暖保寒外套 / 防風外套</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>替換衣物與內著（兩天份）</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>舒適運動鞋 / 慢跑鞋</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>深色衣物（藍染 DIY 備用）</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 分類 3：親子用品 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                        <h4 class="font-bold text-sm text-slate-800 flex items-center gap-2 border-b border-slate-200 pb-2">
+                            <i class="fa-solid fa-baby-carriage text-amber-600"></i>
+                            <span>3. 親子與兒童專用</span>
+                        </h4>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>兒童水壺 / 隨行保溫瓶</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>濕紙巾 / 乾洗手 / 備用尿布</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>兒童安撫玩具 / 繪本零食</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 分類 4：個人藥品與雜物 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                        <h4 class="font-bold text-sm text-slate-800 flex items-center gap-2 border-b border-slate-200 pb-2">
+                            <i class="fa-solid fa-kit-medical text-rose-600"></i>
+                            <span>4. 個人藥品與 3C 雜物</span>
+                        </h4>
+                        <div class="space-y-2 text-xs sm:text-sm">
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>手機充電器 / 行動電源 / 車充</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>個人常備藥 / 暈車藥 / 防蚊液</span>
+                            </label>
+                            <label class="flex items-center gap-2.5 cursor-pointer hover:bg-white p-1.5 rounded transition">
+                                <input type="checkbox" onchange="updatePackingProgress()" class="pack-chk rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4">
+                                <span>摺疊雨具 / 晴雨傘 / 環保購物袋</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 個人自由備忘錄 -->
+                <div class="bg-amber-50/60 p-4 rounded-xl border border-amber-200 space-y-2">
+                    <label for="personal-memo" class="font-bold text-sm text-amber-950 flex items-center gap-2">
+                        <i class="fa-solid fa-pen-to-square text-amber-600"></i>
+                        <span>個人專屬行前備忘錄（自動儲存於本機瀏覽器）</span>
+                    </label>
+                    <textarea id="personal-memo" oninput="savePersonalMemo()" rows="3" placeholder="可在此記錄要交代家人攜帶的物品、採買清單或備註事項..." class="w-full text-xs sm:text-sm p-3 rounded-lg border border-amber-200 bg-white focus:ring-emerald-500 focus:border-emerald-500"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 頁面 6：共同支出 ==================== -->
+        <section id="tab-6" class="tab-content hidden space-y-6">
+            <!-- 團體合菜分攤權重規則說明 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-900 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-scale-balanced text-emerald-600"></i>
+                        <span>共同支出與團體合菜分攤權重規則</span>
+                    </h3>
+                    <span class="text-xs font-bold bg-amber-100 text-amber-900 px-3 py-1 rounded-full w-fit">
+                        合菜總權重：20.5 份（9戶參與）
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-800">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <span class="font-bold text-slate-950 block text-sm border-b border-slate-200 pb-1">
+                            餐費人頭權重計算方式
+                        </span>
+                        <ul class="space-y-1 text-slate-700">
+                            <li>• <strong class="text-slate-900">大人（滿12歲）：</strong>每人 <strong class="text-slate-900">1.0 份</strong>（9戶共 18 大）</li>
+                            <li>• <strong class="text-slate-900">國小學童（7~10歲）：</strong>每人 <strong class="text-slate-900">0.5 份</strong>（思婷1、沐涵1、mir1、阿左2，共 5 小）</li>
+                            <li>• <strong class="text-slate-900">幼兒園（3~4歲）：</strong><strong class="text-slate-900">免費不計份數</strong>（子昕1、筑芸1、名真1、mir1，共 4 小）</li>
+                            <li>• <strong class="text-slate-900">阿雪家庭（2大0小）：</strong><strong class="text-emerald-700">不參與合菜分攤</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5">
+                        <span class="font-bold text-slate-950 block text-sm border-b border-slate-200 pb-1">
+                            各戶合菜佔比一覽
+                        </span>
+                        <div class="grid grid-cols-3 gap-2 text-xs text-slate-700 pt-1">
+                            <div class="bg-white p-2 rounded border border-slate-200"><strong>思婷：</strong>2.5 份</div>
+                            <div class="bg-white p-2 rounded border border-slate-200"><strong>子昕：</strong>2.0 份</div>
+                            <div class="bg-white p-2 rounded border border-slate-200"><strong>小右：</strong>2.0 份</div>
+                            <div class="bg-white p-2 rounded border border-slate-200"><strong>筑芸：</strong>2.0 份</div>
+                            <div class="bg-white p-2 rounded border border-slate-200"><strong>名真：</strong>2.0 份</div>
+                            <div class="bg-white p-2 rounded border border-slate-200"><strong>百合：</strong>2.0 份</div>
+                            <div class="bg-white p-2 rounded border border-slate-200"><strong>沐涵：</strong>2.5 份</div>
+                            <div class="bg-white p-2 rounded border border-slate-200"><strong>mir：</strong>2.5 份</div>
+                            <div class="bg-white p-2 rounded border border-slate-200"><strong>阿左：</strong>3.0 份</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 現場共同消費動態計算機 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <h3 class="font-bold text-slate-900 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-calculator text-emerald-600"></i>
+                        <span>旅途現場共同支出動態計算機</span>
+                    </h3>
+                    <p class="text-xs text-slate-600 mt-1">記錄旅途中額外產生的餐廳合菜、飲料或共同採買費用（獨立計算，不與第 7 頁行前預付混算）。</p>
+                </div>
+
+                <!-- 輸入區 -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 grid grid-cols-1 sm:grid-cols-4 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">消費項目名稱</label>
+                        <input type="text" id="exp-name" placeholder="例如：Day 1 晚餐" class="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">總金額 ($)</label>
+                        <input type="number" id="exp-amount" placeholder="例如：12000" class="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:ring-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">墊付人</label>
+                        <select id="exp-payer" class="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:ring-emerald-500">
+                            <option value="百合">百合</option>
+                            <option value="思婷">思婷</option>
+                            <option value="子昕">子昕</option>
+                            <option value="小右">小右</option>
+                            <option value="筑芸">筑芸</option>
+                            <option value="名真">名真</option>
+                            <option value="沐涵">沐涵</option>
+                            <option value="mir">mir</option>
+                            <option value="阿左">阿左</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">分攤模式</label>
+                        <select id="exp-mode" class="w-full text-xs p-2.5 rounded-lg border border-slate-300 focus:ring-emerald-500">
+                            <option value="weight">按合菜權重分攤 (20.5份)</option>
+                            <option value="9family">參與 9 戶平分</option>
+                            <option value="18adult">18 位大人平分</option>
+                        </select>
+                    </div>
+                    <div class="sm:col-span-4 flex items-center justify-between gap-2 pt-1">
+                        <span id="exp-msg" class="text-xs text-red-600 font-medium hidden"></span>
+                        <button type="button" onclick="addExpenseItem()" class="ml-auto text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-5 rounded-lg transition shadow-sm inline-flex items-center gap-1.5 cursor-pointer">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>新增並即時計算</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 現場消費紀錄清單 -->
+                <div class="space-y-2">
+                    <h4 class="font-bold text-sm text-slate-800">已新增共同支出明細：</h4>
+                    <div id="expense-list" class="space-y-2 text-xs">
+                        <div class="text-slate-500 italic p-3 bg-slate-50 rounded-lg text-center">尚無新增共同支出項目</div>
+                    </div>
+                </div>
+
+                <!-- 共同支出各戶結算總結表 -->
+                <div class="border-t border-slate-200 pt-5 space-y-3">
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-1">
+                        <div>
+                            <h4 class="font-bold text-base text-slate-900">共同支出各戶分攤與收付總結（9戶參與）</h4>
+                            <p class="text-xs text-slate-600">新增或刪除項目時，下方各戶分攤金額與應補/可收回淨額皆會即時重算</p>
+                        </div>
+                        <span id="onsite-total-badge" class="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full w-fit">
+                            共同支出總計：$0
+                        </span>
+                    </div>
+                    <div id="final-balance-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+                        <!-- JS 動態生成 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 頁面 7：給百合費用 ==================== -->
+        <section id="tab-7" class="tab-content hidden space-y-6">
+            <!-- 百合匯款帳號資訊卡 -->
+            <div class="bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 rounded-2xl p-5 sm:p-6 shadow-sm border-2 border-emerald-300 space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-emerald-200 pb-3">
+                    <h3 class="font-bold text-emerald-950 text-base sm:text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-building-columns text-emerald-700"></i>
+                        <span>百合收款匯款帳號</span>
+                    </h3>
+                    <span class="text-xs font-bold bg-emerald-600 text-white px-3 py-1 rounded-full w-fit">
+                        台新銀行 (812)
+                    </span>
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-xl border border-emerald-200/80 shadow-xs">
+                    <div class="space-y-1">
+                        <div class="text-xs text-slate-500">銀行代碼與帳號（台新銀行 812）</div>
+                        <div class="flex items-center flex-wrap gap-2">
+                            <span id="baihe-account-num" class="text-xl sm:text-2xl font-black font-mono tracking-wider text-slate-900 select-all">28881003599451</span>
+                            <button type="button" onclick="copyBaiheAccount()" id="copy-account-btn" class="text-xs bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-800 border border-slate-300 px-3 py-1.5 rounded-lg font-bold transition inline-flex items-center gap-1.5 cursor-pointer">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>複製帳號</span>
+                            </button>
+                        </div>
+                        <p class="text-xs text-slate-600 pt-0.5">點擊右側按鈕會自動複製帳號並跳轉至 Richart，若未自動帶入可直接貼上帳號唷！</p>
+                    </div>
+
+                    <a href="https://mobile.richart.tw/TSDIB_RichartWeb/RC04/RC040300?token=8C03488E2B7A93B4DC6FB4D553667015" onclick="handleRichartClick(event)" class="inline-flex items-center justify-center gap-2 bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-xl shadow-sm transition shrink-0">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <span>開啟 Richart 轉帳（自動複製帳號）</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 預付代墊項目說明卡片 -->
+            <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 pb-3">
+                    <h3 class="font-bold text-slate-900 text-lg flex items-center gap-2">
+                        <i class="fa-solid fa-file-invoice-dollar text-emerald-600"></i>
+                        <span>百合代墊項目明細（住宿、DIY 與門票）</span>
+                    </h3>
+                    <span class="text-xs font-bold bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full w-fit">
+                        行前預付實報實銷
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs sm:text-sm text-slate-800">
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                        <div class="text-xs text-slate-500">卓也小屋住宿（10房）</div>
+                        <div class="font-bold text-slate-900 text-base mt-0.5">$49,200</div>
+                        <div class="text-[11px] text-slate-600 mt-1">含思婷、沐涵各加 1 床</div>
+                    </div>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                        <div class="text-xs text-slate-500">卓也藍染 DIY（7組/11件）</div>
+                        <div class="font-bold text-slate-900 text-base mt-0.5">$8,400</div>
+                        <div class="text-[11px] text-slate-600 mt-1">依各戶預訂品項實報實銷</div>
+                    </div>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                        <div class="text-xs text-slate-500">彈珠汽水門票（29人）</div>
+                        <div class="font-bold text-slate-900 text-base mt-0.5">$5,800</div>
+                        <div class="text-[11px] text-slate-600 mt-1">20大9小全員統一 $200/人</div>
+                    </div>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+                        <div class="text-xs text-slate-500">舊山線鐵道自行車 B 路線</div>
+                        <div class="font-bold text-slate-900 text-base mt-0.5">$6,490</div>
+                        <div class="text-[11px] text-slate-600 mt-1">特惠 $230×25 + 幼童 $185×4</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10 戶完整應給百合明細表 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row justify-between sm:items-center gap-2 bg-slate-50">
+                    <div>
+                        <h3 class="font-bold text-slate-900 text-base sm:text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-hand-holding-dollar text-emerald-600"></i>
+                            <span>各戶「應該給百合的費用」明細總表</span>
+                        </h3>
+                        <p class="text-xs text-slate-600 mt-0.5">可勾選「已結清」即時追蹤轉帳進度（自動儲存於瀏覽器）</p>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs sm:text-sm">
+                        <thead class="bg-slate-100 text-slate-900 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-3.5">家庭代表</th>
+                                <th class="p-3.5">房間費用</th>
+                                <th class="p-3.5">藍染 DIY</th>
+                                <th class="p-3.5">汽水門票</th>
+                                <th class="p-3.5">鐵道車票</th>
+                                <th class="p-3.5 font-extrabold text-slate-900">應給百合總額</th>
+                                <th class="p-3.5 text-center">轉帳狀態</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-slate-800">
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-slate-950">思婷</td>
+                                <td class="p-3.5">$3,900</td>
+                                <td class="p-3.5">$1,530</td>
+                                <td class="p-3.5">$600</td>
+                                <td class="p-3.5">$690</td>
+                                <td class="p-3.5 font-extrabold text-amber-700">$6,720</td>
+                                <td class="p-3.5 text-center">
+                                    <input type="checkbox" onchange="savePaidStatus()" class="settle-chk rounded text-emerald-600 w-4 h-4 cursor-pointer">
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-slate-950">子昕</td>
+                                <td class="p-3.5">$3,400</td>
+                                <td class="p-3.5">$0</td>
+                                <td class="p-3.5">$600</td>
+                                <td class="p-3.5">$645</td>
+                                <td class="p-3.5 font-extrabold text-amber-700">$4,645</td>
+                                <td class="p-3.5 text-center">
+                                    <input type="checkbox" onchange="savePaidStatus()" class="settle-chk rounded text-emerald-600 w-4 h-4 cursor-pointer">
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-slate-950">小右</td>
+                                <td class="p-3.5">$3,400</td>
+                                <td class="p-3.5">$1,980</td>
+                                <td class="p-3.5">$400</td>
+                                <td class="p-3.5">$460</td>
+                                <td class="p-3.5 font-extrabold text-amber-700">$6,240</td>
+                                <td class="p-3.5 text-center">
+                                    <input type="checkbox" onchange="savePaidStatus()" class="settle-chk rounded text-emerald-600 w-4 h-4 cursor-pointer">
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-slate-950">筑芸</td>
+                                <td class="p-3.5">$3,400</td>
+                                <td class="p-3.5">$540</td>
+                                <td class="p-3.5">$600</td>
+                                <td class="p-3.5">$645</td>
+                                <td class="p-3.5 font-extrabold text-amber-700">$5,185</td>
+                                <td class="p-3.5 text-center">
+                                    <input type="checkbox" onchange="savePaidStatus()" class="settle-chk rounded text-emerald-600 w-4 h-4 cursor-pointer">
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-slate-950">名真</td>
+                                <td class="p-3.5">$5,000</td>
+                                <td class="p-3.5">$0</td>
+                                <td class="p-3.5">$600</td>
+                                <td class="p-3.5">$645</td>
+                                <td class="p-3.5 font-extrabold text-amber-700">$6,245</td>
+                                <td class="p-3.5 text-center">
+                                    <input type="checkbox" onchange="savePaidStatus()" class="settle-chk rounded text-emerald-600 w-4 h-4 cursor-pointer">
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-slate-950">阿雪</td>
+                                <td class="p-3.5">$5,000</td>
+                                <td class="p-3.5">$540</td>
+                                <td class="p-3.5">$400</td>
+                                <td class="p-3.5">$460</td>
+                                <td class="p-3.5 font-extrabold text-amber-700">$6,400</td>
+                                <td class="p-3.5 text-center">
+                                    <input type="checkbox" onchange="savePaidStatus()" class="settle-chk rounded text-emerald-600 w-4 h-4 cursor-pointer">
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 bg-emerald-50/40">
+                                <td class="p-3.5 font-bold text-slate-950">百合 <span class="text-xs bg-emerald-200 text-emerald-900 px-1.5 py-0.5 rounded">代墊人</span></td>
+                                <td class="p-3.5">$5,200</td>
+                                <td class="p-3.5">$0</td>
+                                <td class="p-3.5">$400</td>
+                                <td class="p-3.5">$460</td>
+                                <td class="p-3.5 font-extrabold text-emerald-700">$6,060 <span class="text-xs font-normal text-slate-600">(自家份額)</span></td>
+                                <td class="p-3.5 text-center">
+                                    <input type="checkbox" onchange="savePaidStatus()" class="settle-chk rounded text-emerald-600 w-4 h-4 cursor-pointer">
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-slate-950">沐涵</td>
+                                <td class="p-3.5">$6,100</td>
+                                <td class="p-3.5">$300</td>
+                                <td class="p-3.5">$600</td>
+                                <td class="p-3.5">$690</td>
+                                <td class="p-3.5 font-extrabold text-amber-700">$7,690</td>
+                                <td class="p-3.5 text-center">
+                                    <input type="checkbox" onchange="savePaidStatus()" class="settle-chk rounded text-emerald-600 w-4 h-4 cursor-pointer">
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-slate-950">mir</td>
+                                <td class="p-3.5">$6,900</td>
+                                <td class="p-3.5">$1,980</td>
+                                <td class="p-3.5">$800</td>
+                                <td class="p-3.5">$875</td>
+                                <td class="p-3.5 font-extrabold text-amber-700">$10,555</td>
+                                <td class="p-3.5 text-center">
+                                    <input type="checkbox" onchange="savePaidStatus()" class="settle-chk rounded text-emerald-600 w-4 h-4 cursor-pointer">
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3.5 font-bold text-slate-950">阿左</td>
+                                <td class="p-3.5">$6,900</td>
+                                <td class="p-3.5">$1,530</td>
+                                <td class="p-3.5">$800</td>
+                                <td class="p-3.5">$920</td>
+                                <td class="p-3.5 font-extrabold text-amber-700">$10,150</td>
+                                <td class="p-3.5 text-center">
+                                    <input type="checkbox" onchange="savePaidStatus()" class="settle-chk rounded text-emerald-600 w-4 h-4 cursor-pointer">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁腳與分頁快速切換按鈕 -->
+    <footer class="bg-white border-t border-slate-200 py-6 no-print">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <button onclick="navigateTab(-1)" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg font-medium transition flex items-center gap-1">
+                    <i class="fa-solid fa-chevron-left"></i>
+                    <span>上一頁</span>
+                </button>
+                <button onclick="navigateTab(1)" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded-lg font-medium transition flex items-center gap-1">
+                    <span>下一頁</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="text-xs text-slate-600 text-center sm:text-right">
+                <p>2026 苗栗兩天一夜慢活之旅．行前手冊</p>
+                <p class="text-[11px] text-slate-600 mt-0.5">祝大家假期愉快！出門平安！</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript 邏輯 -->
+    <script>
+        // 頁面切換控制
+        const tabIds = ['tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5', 'tab-6', 'tab-7'];
+
+        function switchTab(targetId) {
+            tabIds.forEach((id, idx) => {
+                const content = document.getElementById(id);
+                const btn = document.getElementById(`btn-tab-${idx + 1}`);
+
+                if (id === targetId) {
+                    content.classList.remove('hidden');
+                    btn.classList.add('bg-emerald-700', 'text-white', 'shadow-sm', 'border', 'border-emerald-500/40');
+                    btn.classList.remove('text-emerald-100', 'hover:bg-emerald-800/70');
+                } else {
+                    content.classList.add('hidden');
+                    btn.classList.remove('bg-emerald-700', 'text-white', 'shadow-sm', 'border', 'border-emerald-500/40');
+                    btn.classList.add('text-emerald-100', 'hover:bg-emerald-800/70');
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function navigateTab(direction) {
+            const currentVisible = tabIds.findIndex(id => !document.getElementById(id).classList.contains('hidden'));
+            let nextIndex = currentVisible + direction;
+            if (nextIndex < 0) nextIndex = 0;
+            if (nextIndex >= tabIds.length) nextIndex = tabIds.length - 1;
+            switchTab(tabIds[nextIndex]);
+        }
+
+        // 複製百合帳號
+        function copyBaiheAccount() {
+            const acc = '28881003599451';
+            const btn = document.getElementById('copy-account-btn');
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(acc).then(() => {
+                    btn.innerHTML = '<i class="fa-solid fa-check text-emerald-700"></i><span class="text-emerald-800">已複製帳號！</span>';
+                    setTimeout(() => {
+                        btn.innerHTML = '<i class="fa-regular fa-copy"></i><span>複製帳號</span>';
+                    }, 2500);
+                }).catch(() => fallbackCopy(acc, btn));
+            } else {
+                fallbackCopy(acc, btn);
+            }
+        }
+
+        function fallbackCopy(text, btn) {
+            const temp = document.createElement('input');
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            if (btn) {
+                btn.innerHTML = '<i class="fa-solid fa-check text-emerald-700"></i><span class="text-emerald-800">已複製帳號！</span>';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-regular fa-copy"></i><span>複製帳號</span>';
+                }, 2500);
+            }
+        }
+
+        // 點擊 Richart 按鈕時先自動複製帳號，再於同視窗跳轉以利手機喚醒 APP
+        function handleRichartClick(e) {
+            e.preventDefault();
+            const url = e.currentTarget.href;
+            copyBaiheAccount();
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
+
+        // 實時動態倒數計時器
+        function updateCountdown() {
+            const targetDate = new Date('2026-12-19T09:30:00+08:00').getTime();
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+                document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('cd-days').innerText = '00';
+                document.getElementById('cd-hours').innerText = '00';
+                document.getElementById('cd-minutes').innerText = '00';
+                document.getElementById('cd-seconds').innerText = '00';
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // 行李清單 localStorage & 進度條
+        function updatePackingProgress() {
+            const chks = document.querySelectorAll('.pack-chk');
+            let checked = 0;
+            const states = [];
+
+            chks.forEach((c) => {
+                if (c.checked) checked++;
+                states.push(c.checked);
+            });
+
+            const percent = Math.round((checked / chks.length) * 100);
+            document.getElementById('pack-progress-bar').style.width = percent + '%';
+            document.getElementById('pack-progress-text').innerText = percent + '%';
+
+            localStorage.setItem('miaoli_pack_chks', JSON.stringify(states));
+        }
+
+        function loadPackingProgress() {
+            const saved = localStorage.getItem('miaoli_pack_chks');
+            if (saved) {
+                const states = JSON.parse(saved);
+                const chks = document.querySelectorAll('.pack-chk');
+                chks.forEach((c, idx) => {
+                    if (states[idx] !== undefined) c.checked = states[idx];
+                });
+            }
+            updatePackingProgress();
+        }
+
+        function savePersonalMemo() {
+            const val = document.getElementById('personal-memo').value;
+            localStorage.setItem('miaoli_memo', val);
+        }
+
+        function loadPersonalMemo() {
+            const saved = localStorage.getItem('miaoli_memo');
+            if (saved) {
+                document.getElementById('personal-memo').value = saved;
+            }
+        }
+
+        // 結清勾選狀態 Save
+        function savePaidStatus() {
+            const chks = document.querySelectorAll('.settle-chk');
+            const states = Array.from(chks).map(c => c.checked);
+            localStorage.setItem('miaoli_paid_status', JSON.stringify(states));
+        }
+
+        function loadPaidStatus() {
+            const saved = localStorage.getItem('miaoli_paid_status');
+            if (saved) {
+                const states = JSON.parse(saved);
+                const chks = document.querySelectorAll('.settle-chk');
+                chks.forEach((c, idx) => {
+                    if (states[idx] !== undefined) c.checked = states[idx];
+                });
+            }
+        }
+
+        // 現場共同餐費動態計算機邏輯（獨立計算 9 戶共同支出）
+        const mealShares = {
+            '思婷': 2.5,
+            '子昕': 2.0,
+            '小右': 2.0,
+            '筑芸': 2.0,
+            '名真': 2.0,
+            '百合': 2.0,
+            '沐涵': 2.5,
+            'mir': 2.5,
+            '阿左': 3.0
+        };
+
+        let liveExpenses = [];
+
+        function loadLiveExpenses() {
+            const saved = localStorage.getItem('miaoli_live_expenses');
+            if (saved) {
+                try {
+                    liveExpenses = JSON.parse(saved);
+                } catch (e) {
+                    liveExpenses = [];
+                }
+            }
+            renderExpenseList();
+        }
+
+        function saveLiveExpenses() {
+            localStorage.setItem('miaoli_live_expenses', JSON.stringify(liveExpenses));
+        }
+
+        function addExpenseItem() {
+            const name = document.getElementById('exp-name').value.trim();
+            const amount = parseFloat(document.getElementById('exp-amount').value);
+            const payer = document.getElementById('exp-payer').value;
+            const mode = document.getElementById('exp-mode').value;
+            const msgEl = document.getElementById('exp-msg');
+
+            if (!name || isNaN(amount) || amount <= 0) {
+                msgEl.innerText = '請輸入有效的消費項目名稱與金額！';
+                msgEl.classList.remove('hidden');
+                return;
+            }
+
+            msgEl.classList.add('hidden');
+            liveExpenses.push({ name, amount, payer, mode });
+            saveLiveExpenses();
+            document.getElementById('exp-name').value = '';
+            document.getElementById('exp-amount').value = '';
+            renderExpenseList();
+            calculateFinalBalances();
+        }
+
+        function removeExpense(idx) {
+            liveExpenses.splice(idx, 1);
+            saveLiveExpenses();
+            renderExpenseList();
+            calculateFinalBalances();
+        }
+
+        function renderExpenseList() {
+            const container = document.getElementById('expense-list');
+            if (liveExpenses.length === 0) {
+                container.innerHTML = `<div class="text-slate-500 italic p-3 bg-slate-50 rounded-lg text-center">尚無新增現場消費項目</div>`;
+                return;
+            }
+
+            container.innerHTML = liveExpenses.map((exp, idx) => `
+                <div class="flex items-center justify-between bg-slate-50 p-3 rounded-lg border border-slate-200">
+                    <div>
+                        <strong class="text-slate-900">${exp.name}</strong> 
+                        <span class="text-emerald-700 font-bold ml-1">$${exp.amount.toLocaleString()}</span>
+                        <span class="text-slate-500 text-[11px] ml-2">（${exp.payer} 墊付 ｜ 模式：${exp.mode === 'weight' ? '按權重 20.5份' : exp.mode === '9family' ? '9戶均分' : '18位大人均分'}）</span>
+                    </div>
+                    <button onclick="removeExpense(${idx})" class="text-red-500 hover:text-red-700 text-xs px-2 py-1 rounded" title="刪除此筆">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function calculateFinalBalances() {
+            const netOwed = {};
+            const onsiteShare = {};
+            const onsitePaid = {};
+            let totalOnsite = 0;
+
+            Object.keys(mealShares).forEach(fam => {
+                netOwed[fam] = 0;
+                onsiteShare[fam] = 0;
+                onsitePaid[fam] = 0;
+            });
+
+            // 累加每筆現場共同消費
+            liveExpenses.forEach(exp => {
+                const amt = Number(exp.amount) || 0;
+                totalOnsite += amt;
+                if (netOwed[exp.payer] !== undefined) {
+                    netOwed[exp.payer] -= amt;
+                    onsitePaid[exp.payer] += amt;
+                }
+
+                if (exp.mode === 'weight') {
+                    const unitPrice = amt / 20.5;
+                    Object.keys(mealShares).forEach(fam => {
+                        const cost = unitPrice * mealShares[fam];
+                        netOwed[fam] += cost;
+                        onsiteShare[fam] += cost;
+                    });
+                } else if (exp.mode === '9family') {
+                    const unitPrice = amt / 9;
+                    Object.keys(mealShares).forEach(fam => {
+                        netOwed[fam] += unitPrice;
+                        onsiteShare[fam] += unitPrice;
+                    });
+                } else if (exp.mode === '18adult') {
+                    const unitPrice = amt / 18;
+                    Object.keys(mealShares).forEach(fam => {
+                        const cost = unitPrice * 2;
+                        netOwed[fam] += cost;
+                        onsiteShare[fam] += cost;
+                    });
+                }
+            });
+
+            const badge = document.getElementById('onsite-total-badge');
+            if (badge) {
+                badge.innerText = `共同支出總計：$${Math.round(totalOnsite).toLocaleString()}`;
+            }
+
+            const container = document.getElementById('final-balance-container');
+            container.innerHTML = Object.keys(mealShares).map(fam => {
+                const net = Math.round(netOwed[fam]);
+                const shareVal = Math.round(onsiteShare[fam]);
+                const paidVal = Math.round(onsitePaid[fam]);
+
+                let statusLabel = '';
+                let statusColor = '';
+                let cardBorder = 'border-slate-200 bg-slate-50';
+
+                if (net > 0) {
+                    statusLabel = `應補繳 $${net.toLocaleString()}`;
+                    statusColor = 'text-amber-700';
+                } else if (net < 0) {
+                    statusLabel = `可收回 $${Math.abs(net).toLocaleString()}`;
+                    statusColor = 'text-emerald-700';
+                    cardBorder = 'border-emerald-300 bg-emerald-50/50';
+                } else {
+                    statusLabel = '已結平 $0';
+                    statusColor = 'text-slate-600';
+                }
+
+                return `
+                    <div class="p-3.5 border ${cardBorder} rounded-xl space-y-1.5">
+                        <div class="font-bold text-slate-900 flex justify-between items-center">
+                            <span class="text-sm">${fam}</span>
+                            <span class="text-slate-500 font-normal text-[11px]">權重 ${mealShares[fam]} 份</span>
+                        </div>
+                        <div class="text-[11px] text-slate-600">應分攤金額：$${shareVal.toLocaleString()}</div>
+                        <div class="text-[11px] text-slate-600">已先墊付：$${paidVal.toLocaleString()}</div>
+                        <div class="text-sm font-extrabold pt-1.5 border-t border-slate-200/80 ${statusColor}">
+                            ${statusLabel}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // 初始化
+        window.onload = function() {
+            loadPackingProgress();
+            loadPersonalMemo();
+            loadPaidStatus();
+            loadLiveExpenses();
+            calculateFinalBalances();
+        };
+    </script>
+</body>
+</html>
