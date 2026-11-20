@@ -42,6 +42,11 @@
     </script>
 
     <style>
+        /* 整體字體基準放大約 2 號（原 16px 調整為 18.5px），等比例放大所有 rem 單位字體且不改動版面結構 */
+        html {
+            font-size: 18.5px;
+        }
+
         /* 隱藏滾動條但保持滾動 */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -455,51 +460,59 @@
                     </div>
                 </div>
 
+                <!-- 藍染溫馨提醒 -->
+                <div class="bg-indigo-50/70 border border-indigo-200 rounded-xl p-3.5 text-xs text-indigo-950 flex items-start gap-2.5">
+                    <i class="fa-solid fa-circle-info text-indigo-600 mt-0.5"></i>
+                    <div>
+                        <strong>體驗小叮嚀：</strong>全程約 60～90 分鐘，現場提供圍裙與手套，但藍染染液沾到衣物不易清洗，強烈建議當天穿著<strong>深色衣物</strong>與耐髒鞋款前往工坊。
+                    </div>
+                </div>
+
                 <!-- 藍染預訂明細 -->
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-xs sm:text-sm border border-slate-100 rounded-xl">
                         <thead class="bg-indigo-50/50 text-indigo-950 font-semibold border-b border-slate-200">
                             <tr>
-                                <th class="p-3">代表姓名</th>
-                                <th class="p-3">預訂體驗內容</th>
-                                <th class="p-3 text-right">費用</th>
+                                <th class="p-3 min-w-[90px]">代表姓名</th>
+                                <th class="p-3 min-w-[260px]">預訂體驗品項</th>
+                                <th class="p-3 text-right min-w-[90px]">費用</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100">
                             <tr class="hover:bg-slate-50">
-                                <td class="p-3 font-bold text-slate-800">思婷</td>
-                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
-                                <td class="p-3 text-right font-medium">$1,530</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
-                                <td class="p-3 font-bold text-slate-800">小右</td>
-                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
-                                <td class="p-3 text-right font-medium">$1,980</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
-                                <td class="p-3 font-bold text-slate-800">筑芸</td>
-                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
-                                <td class="p-3 text-right font-medium">$540</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
-                                <td class="p-3 font-bold text-slate-800">阿雪</td>
-                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
-                                <td class="p-3 text-right font-medium">$540</td>
-                            </tr>
-                            <tr class="hover:bg-slate-50">
                                 <td class="p-3 font-bold text-slate-800">沐涵</td>
-                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
+                                <td class="p-3 text-slate-700">方巾 1</td>
                                 <td class="p-3 text-right font-medium">$300</td>
                             </tr>
                             <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-slate-800">阿雪</td>
+                                <td class="p-3 text-slate-700">水壺袋 1</td>
+                                <td class="p-3 text-right font-medium">$540</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-slate-800">思婷</td>
+                                <td class="p-3 text-slate-700">抱枕 1 ＋ 水壺袋 1</td>
+                                <td class="p-3 text-right font-medium">$1,530</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
                                 <td class="p-3 font-bold text-slate-800">mir</td>
-                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
+                                <td class="p-3 text-slate-700">抱枕 1 ＋ 門簾中 1</td>
                                 <td class="p-3 text-right font-medium">$1,980</td>
                             </tr>
                             <tr class="hover:bg-slate-50">
                                 <td class="p-3 font-bold text-slate-800">阿左</td>
-                                <td class="p-3 text-slate-600">藍染體驗預訂明細</td>
+                                <td class="p-3 text-slate-700">水壺袋 1 ＋ 門簾中 1</td>
                                 <td class="p-3 text-right font-medium">$1,530</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-slate-800">筑芸</td>
+                                <td class="p-3 text-slate-700">水壺袋 1</td>
+                                <td class="p-3 text-right font-medium">$540</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold text-slate-800">小右</td>
+                                <td class="p-3 text-slate-700">抱枕 2</td>
+                                <td class="p-3 text-right font-medium">$1,980</td>
                             </tr>
                             <tr class="bg-slate-50 font-bold">
                                 <td class="p-3 text-slate-700" colspan="2">未預訂 DIY 家庭（子昕、名真、百合）</td>
